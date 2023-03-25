@@ -1,6 +1,8 @@
 const apiKey = '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';
+var errorMessage;
 
 function summarizeText(text, promptTemplate, maxTokens) {
+  errorMessage = null;
   return fetch('https://api.openai.com/v1/completions', {
     method: 'POST',
     headers: {
@@ -20,13 +22,14 @@ function summarizeText(text, promptTemplate, maxTokens) {
   .then(response => response.json())
   .then(data => {
     console.log('Réponse de l\'API:', data);
+    if (data.error) {errorMessage = data.error.message;}
     return data.choices[0].text.trim();
   });
 }
 
 const promptSalt = "format and stylish your answer text with html in order to make it visually extremly clear";
 const maxTokens = 600;
-const menuItems = [
+const menuItemsSeed = [
   {
     id: 'resumeTexte',
     title: '1. Summarize the text for a second-grade student',
@@ -91,11 +94,24 @@ const menuItems = [
 ];
 
 chrome.runtime.onInstalled.addListener(function() {
-  menuItems.forEach(item => {
-    chrome.contextMenus.create({
-      id: item.id,
-      title: item.title,
-      contexts: ['selection']
+  // Chargez les éléments de menu enregistrés à partir du stockage local
+  chrome.storage.sync.get('menuItems', (data) => {
+    const menuItems = data.menuItems || [];
+
+    menuItemsSeed.forEach(item => {
+      chrome.contextMenus.create({
+        id: item.id,
+        title: item.title,
+        contexts: ['selection']
+      });
+    });
+
+    menuItems.forEach(item => {
+      chrome.contextMenus.create({
+        id: item.id,
+        title: item.title,
+        contexts: ['selection']
+      });
     });
   });
 });
@@ -104,18 +120,34 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
   const selectedText = info.selectionText;
   console.log('Texte sélectionné:', selectedText);
 
-  const menuItem = menuItems.find(item => item.id === info.menuItemId);
+  // Chargez les éléments de menu enregistrés à partir du stockage local
+  chrome.storage.sync.get('menuItems', async (data) => {
+    const menuItems = data.menuItems || [];
+    const menuItem = menuItems.find(item => item.id === info.menuItemId) || menuItemsSeed.find(item => item.id === info.menuItemId);
 
-  if (menuItem) {
-    try {
-      const summary = await summarizeText(selectedText, menuItem.promptTemplate, menuItem.maxTokens);
-      console.log('Résumé:', summary);
-      chrome.tabs.sendMessage(tab.id, { action: 'showSummary', summary: summary });
-    } catch (error) {
-      console.error('Erreur lors de la génération du résumé du texte:', error);
+    if (menuItem) {
+      try {
+        const summary = await summarizeText(selectedText, menuItem.promptTemplate, menuItem.maxTokens);
+        console.log('Résumé:', summary);
+
+        // Injectez le script de contenu dans la page active avant d'envoyer le message
+        chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          files: ['content.js']
+        }, () => {
+          chrome.tabs.sendMessage(tab.id, { action: 'showSummary', summary: summary });
+        });
+      } catch (error) {
+        console.error('Erreur lors de la génération du résumé du texte:', error);
+        if (error.message) {
+          chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            files: ['content.js']
+          }, () => {
+            chrome.tabs.sendMessage(tab.id, { action: 'showSummary', summary: errorMessage });
+          });
+        }
+      }
     }
-  }
+  });
 });
-
-
-

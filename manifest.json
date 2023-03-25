@@ -10,7 +10,8 @@
       "128": "icon128.png"
     }
   },
-  "permissions": ["contextMenus", "activeTab", "scripting", "tabs"],
+  "options_page": "options.html",
+  "permissions": ["contextMenus", "activeTab", "scripting", "tabs", "storage"],
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -18,11 +19,5 @@
   },
   "background": {
     "service_worker": "background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": ["*://*/*"],
-      "js": ["content.js"]
-    }
-  ]
+  }
 }

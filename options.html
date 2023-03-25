@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Options</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      #menuItemsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .menuItem {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      input[type="text"] {
+        flex-grow: 1;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      textarea {
+        flex-grow: 1;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        resize: vertical;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      button:hover {
+        background-color: #0069d9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Options</h1>
+    <div id="menuItemsContainer">
+      <!-- Les éléments du menu seront ajoutés dynamiquement ici -->
+    </div>
+    <button id="addMenuItem">Ajouter un élément</button>
+    <button id="saveMenuItems">Enregistrer les modifications</button>
+    <script src="options.js"></script>
+  </body>
+</html>
