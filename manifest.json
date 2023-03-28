@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Résumeur de Texte",
+  "name": "promptAIzer",
   "version": "1.0",
   "description": "Résumer le texte sélectionné en utilisant GPT-4.",
   "action": {
@@ -11,7 +11,13 @@
     }
   },
   "options_page": "options.html",
-  "permissions": ["contextMenus", "activeTab", "scripting", "tabs", "storage"],
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage"
+  ],
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",

@@ -1,4 +1,4 @@
-(function() {
+(function () {
   // On vérifie que le script n'a pas déjà été exécuté
   if (window.hasRun) {
     return;
@@ -19,7 +19,7 @@
       modal.remove();
     });
   };
-  
+
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     console.log('Message reçu:', request);
     if (request.action === 'showSummary') {
