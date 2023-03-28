@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "promptAIzer",
   "version": "1.0",
-  "description": "Résumer le texte sélectionné en utilisant GPT-4.",
+  "description": "This extension is a versatile text processing tool that integrates with the context menu, offering various options to manipulate and understand selected text. By utilizing OpenAI's GPT-4 API, the extension can summarize text, explain content in different levels of detail, solve problems, provide examples, generate code, fact-check, assess the trustworthiness of information, create DALL-E prompts, and build... Users can customize the extension by adding new menu items in the options page.",
   "action": {
     "default_icon": {
       "16": "icon16.png",
