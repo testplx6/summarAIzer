@@ -49,63 +49,63 @@ const menuItemsSeed = [
     promptTemplate: 'Summarize this for a second-grade student' + promptSalt,
     maxTokens: maxTokens
   },
-  // {
-  //   id: 'expliquerComme5Ans',
-  //   title: '2. Explain like I\'m five',
-  //   promptTemplate: 'Explain this topic like I\'m 5 years old' + promptSalt,
-  //   maxTokens: maxTokens
-  // },
-  // {
-  //   id: 'expliquerCommeExpert',
-  //   title: '3. Explain this subject to me as an expert in this field',
-  //   promptTemplate: 'Explain this topic in detail like an expert, format your answer with html elements and colors and highlight keywords in order to make it extremly clear',
-  //   maxTokens: maxTokens
-  // },
-  // {
-  //   id: 'solveIt',
-  //   title: '4. Resolve it',
-  //   promptTemplate: 'Define the problem and then propose a solution to this problem' + promptSalt,
-  //   maxTokens: maxTokens
-  // },
-  // {
-  //   id: 'examples',
-  //   title: '5. Examples',
-  //   promptTemplate: 'Give some more examples based on your knowledge about this information' + promptSalt,
-  //   maxTokens: maxTokens
-  // },
-  // {
-  //   id: 'codeIt',
-  //   title: '6. Code it',
-  //   promptTemplate: 'Give me the code to program this, indent the code with html and display it in a code block',
-  //   maxTokens: maxTokens
-  // },
+  {
+    id: 'expliquerComme5Ans',
+    title: '2. Explain like I\'m five',
+    promptTemplate: 'Explain this topic like I\'m 5 years old' + promptSalt,
+    maxTokens: maxTokens
+  },
+  {
+    id: 'expliquerCommeExpert',
+    title: '3. Explain this subject to me as an expert in this field',
+    promptTemplate: 'Explain this topic in detail like an expert, format your answer with html elements and colors and highlight keywords in order to make it extremly clear',
+    maxTokens: maxTokens
+  },
+  {
+    id: 'solveIt',
+    title: '4. Resolve it',
+    promptTemplate: 'Define the problem and then propose a solution to this problem' + promptSalt,
+    maxTokens: maxTokens
+  },
+  {
+    id: 'examples',
+    title: '5. Examples',
+    promptTemplate: 'Give some more examples based on your knowledge about this information' + promptSalt,
+    maxTokens: maxTokens
+  },
+  {
+    id: 'codeIt',
+    title: '6. Code it',
+    promptTemplate: 'Give me the code to program this, indent the code with html and display it in a code block',
+    maxTokens: maxTokens
+  },
   // {
   //   id: 'keywords',
-  //   title: '6. Extract keywords',
+  //   title: '7. Extract keywords',
   //   promptTemplate: 'Analyze this text and extract the most relevant keywords. Present these keywords, using HTML and CSS code for a clean and aesthetically pleasing display.',
   //   maxTokens: maxTokens
   // },
   // {
   //   id: 'factCheck',
-  //   title: '7. Fact check this',
+  //   title: '8. Fact check this',
   //   promptTemplate: 'Are those facts correct? Compare them to your knowledge and tell me if it cann be true or false' + promptSalt,
   //   maxTokens: maxTokens
   // },
   // {
   //   id: 'informations/disinformation',
-  //   title: '8. Informations/disinformation',
+  //   title: '9. Informations/disinformation',
   //   promptTemplate: 'Tell me how much this information can be trusted in your own opinion' + promptSalt,
   //   maxTokens: maxTokens
   // },
   // {
   //   id: 'dall-e prompt',
-  //   title: '9. dall-e prompt',
+  //   title: '10. dall-e prompt',
   //   promptTemplate: 'Build a prompt in order to represent this information with dall-E engine',
   //   maxTokens: maxTokens
   // },
   // {
   //   id: 'quizz it',
-  //   title: '10. Quizz it',
+  //   title: '11. Quizz it',
   //   promptTemplate: 'Build a quizz and hide the answers until i check the correct answer using html in order to verify if the user undrstand well the inormations submitted, when the user check the correct answer display it in green with the word congratulations' + promptSalt,
   //   maxTokens: maxTokens
   // },

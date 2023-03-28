@@ -51,17 +51,21 @@ function addMenuItem() {
 
   const titleInput = document.createElement('input');
   titleInput.setAttribute('type', 'text');
-  titleInput.setAttribute('placeholder', 'Titre');
+  titleInput.setAttribute('placeholder', 'Title');
+  titleInput.setAttribute('title', 'title');
 
   const promptInput = document.createElement('textarea');
-  promptInput.setAttribute('placeholder', 'Modèle de prompt');
+  promptInput.setAttribute('placeholder', 'Enter your prompt here');
+  promptInput.setAttribute('title', 'prompt');
 
   const maxTokensInput = document.createElement('input');
   maxTokensInput.setAttribute('type', 'number');
-  maxTokensInput.setAttribute('placeholder', 'Nombre maximum de tokens');
+  maxTokensInput.setAttribute('placeholder', 'Maximum tokens');
+  maxTokensInput.setAttribute('title', 'maximum tokens');
+  maxTokensInput.setAttribute('value', '600');
 
   const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Supprimer';
+  deleteButton.textContent = 'Remove';
   deleteButton.addEventListener('click', () => {
     itemDiv.remove();
   });
