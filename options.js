@@ -2,6 +2,9 @@ function loadMenuItems() {
   chrome.storage.sync.get('apiKey', (data) => {
     apiKey = data.apiKey || '';
     document.getElementById('apiKey').value = apiKey;
+    if (apiKey.length == 0) {
+      needSaveStyle();
+    }
   });
   // Chargez les éléments de menu enregistrés à partir du stockage local
   chrome.storage.sync.get('menuItems', (data) => {
@@ -17,21 +20,26 @@ function loadMenuItems() {
 
       const titleInput = document.createElement('input');
       titleInput.setAttribute('type', 'text');
-      titleInput.setAttribute('placeholder', 'Titre');
+      titleInput.setAttribute('placeholder', 'Title');
+      titleInput.setAttribute('title', 'title');
       titleInput.value = menuItem.title;
 
       const promptInput = document.createElement('textarea');
-      promptInput.setAttribute('placeholder', 'Modèle de prompt');
+      promptInput.setAttribute('placeholder', 'Enter your prompt here');
+      promptInput.setAttribute('title', 'prompt');
       promptInput.value = menuItem.promptTemplate;
 
       const maxTokensInput = document.createElement('input');
       maxTokensInput.setAttribute('type', 'number');
-      maxTokensInput.setAttribute('placeholder', 'Nombre maximum de tokens');
+      maxTokensInput.setAttribute('placeholder', 'Maximum tokens');
+      maxTokensInput.setAttribute('title', 'maximum tokens');
+      maxTokensInput.setAttribute('value', '600');
       maxTokensInput.value = menuItem.maxTokens;
 
       const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Supprimer';
+      deleteButton.textContent = 'Remove';
       deleteButton.addEventListener('click', () => {
+        needSaveStyle();
         itemDiv.remove();
       });
 
@@ -45,6 +53,9 @@ function loadMenuItems() {
 }
 
 function addMenuItem() {
+
+  needSaveStyle();
+
   const menuItemsContainer = document.getElementById('menuItemsContainer');
   const itemDiv = document.createElement('div');
   itemDiv.classList.add('menuItem');
@@ -105,3 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadMenuItems();
 });
+
+function needSaveStyle() {
+  document.getElementById('saveMenuItems').setAttribute('style', 'background-color: red; color: white; border: none; box-shadow: -1px 2px 0px #00000050;');
+}
